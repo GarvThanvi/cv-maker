@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .main {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 80%;
+        margin: 0 auto;
+      }
+      .bgimage {
+        width: 50%;
+        height: auto;
+      }
+      .slogan {
+        width: 45%;
+        padding: 20px;
+      }
+      .heading {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+      .smalltext {
+        font-size: 1rem;
+        margin-bottom: 20px;
+      }
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+      }
+      .getstarted,
+      .knowmore {
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+      .getstarted:hover,
+      .knowmore:hover {
+        background-color: #2980b9;
+      }
+      .form-container {
+        width: 45%;
+        background-color: #3498db;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      input[type="text"],
+      input[type="password"],
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: none;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+      input[type="submit"] {
+        background-color: #fff;
+        color: #3498db;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      input[type="submit"]:hover {
+        background-color: #f1f1f1;
+      }
+      h2 {
+        text-align: center;
+        color: #fff;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="main">
+      <form class="form-container" action="/register" method="post">
+        <h2>Register</h2>
+        <input type="text" name="username" placeholder="Email" required />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+        <input type="submit" value="Register" />
+        <div class="register-link">
+          <a href="/login" style="color: #fff"
+            >Already have an account? Login here</a
+          >
+        </div>
+        <% if(locals.message){ %>
+            <%= locals.message  %>
+            <% } %>
+      </form>
+
+      <div class="slogan">
+        <h1 class="heading">Navigate Your Career with Precision</h1>
+        <h4 class="smalltext">Craft Your Resume in Minutes</h4>
+        
+    </main>
+  </body>
+</html>

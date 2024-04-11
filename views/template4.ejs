@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume</title>
+    <style>
+      body {
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        line-height: 1.6;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        font-size: medium;
+        max-height: 1400px;
+        max-width: 100vw;
+      }
+      header {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      section {
+        margin-bottom: 0px;
+        padding: 0px;
+      }
+      .contact-info {
+        font-style: italic;
+      }
+
+      .strong {
+        font-weight: bold;
+      }
+
+      h2 {
+        border-bottom: 2px solid black;
+        display: inline-block;
+        padding-bottom: 0px;
+        width: 100%;
+        margin-bottom: 0px;
+      }
+
+      h3 {
+        margin-bottom: 0px;
+      }
+
+      .skills {
+        display: inline-block;
+        margin-left: 150px;
+      }
+
+      .exp_year {
+        display: inline-block;
+        text-align: right;
+        min-width: 1200px;
+        font-weight: 200;
+      }
+      p {
+        margin-bottom: 0px;
+        margin-top: 0px;
+      }
+
+      ul {
+        margin-bottom: 0px;
+      }
+
+      li {
+        margin-bottom: 0px;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .skills {
+          margin-left: 50px;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .skills {
+          margin-left: 20px;
+        }
+
+        header {
+          margin-bottom: 20px;
+        }
+
+        .year,
+        .strong {
+          font-size: 90%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1><%= personalinfo.fname %> <%= personalinfo.lname %></h1>
+      <p class="contact-info"><%= personalinfo.phone %> • <%= personalinfo.city %>, <%= personalinfo.country %><br /></p>
+    </header>
+
+    <hr />
+
+    <section id="objective">
+      <h2>OBJECTIVE</h2>
+      <p>
+        <%= personalinfo.summary %>
+      </p>
+    </section>
+
+    <section id="education">
+      <h2>EDUCATION</h2>
+      <ul>
+        <% education.forEach((education, index) => { %>
+        <li>
+          <strong><%= education.qualification %></strong>, <%= education.institute %><span
+            class="year1"
+            >(<%= education.startYear %> - <%= education.endYear %>)
+          </span>
+        </li>
+        <% }) %>
+      </ul>
+    </section>
+
+    <section id="skills">
+      <h2>SKILLS</h2>
+      <ul>
+        <% skills.filter(skill => skill !== null).forEach((skill, index) =>
+            { %>
+        <li><%=skill.skill%></li>
+        <% }) %>
+      </ul>
+    </section>
+
+    <section id="experience">
+      <h2>EXPERIENCE</h2>
+      <% (experience || []).filter(experience => experience !==
+          null).forEach((experience, index) => { %>
+      <h3><%= experience.company.title %><span class="exp_year">(<%= experience.company.startDate %> - <%= experience.company.endDate %>) </span></h3>
+      <p><%= experience.company.name %></p>
+      <ul>
+        <li><%= experience.company.role %></li>
+      </ul>
+      <% }) %>
+
+    </section>
+
+    <section id="projects">
+      <h2>PROJECTS</h2>
+      <% projects.filter((project) => project !== null).forEach((project,
+      index) => { %>
+      <h3><%= project.projectName %></h3>
+      <p>
+        <%= project.projectDescription %>
+      </p>
+      <% }) %>
+    </section>
+
+    <section id="activities">
+      <h2>EXTRA CURRICULAR ACTIVITIES</h2>
+
+      <ul>
+        <% accomplishments.filter(accomplishment => accomplishment !==
+            null).forEach((accomplishment, index) => { %>
+            <li><%= accomplishment.accomplishment %></li>
+            <% }) %>
+      </ul>
+    </section>
+  </body>
+</html>
